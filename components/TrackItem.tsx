@@ -4,6 +4,7 @@ import { ITrack } from '../types/track';
 import styles from '../styles/TrackItem.module.sass'
 import { Pause, PlayArrow, Delete} from '@mui/icons-material';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 interface TrackItemProps {
     track: ITrack,
@@ -20,7 +21,7 @@ const TrackItem: React.FC<TrackItemProps> = ({track, active = false}) => {
                     : <PlayArrow />
                 }
             </IconButton>
-            <img width={70} height={70} src={track.picture} />
+            <Image width={70} height={70} alt='' src={track.picture} />
             <Grid container direction='column' style={{margin: '0 20px', width: 200}}>
                 <div>{track.name}</div>
                 <div style={{fontSize:12, color: 'grey'}}>{track.artist}</div>

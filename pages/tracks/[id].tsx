@@ -3,6 +3,7 @@ import {ITrack} from '../../types/track';
 import MainLayout from '../../layouts/MainLayout';
 import { Button, Grid, TextField } from '@mui/material';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 
 const TrackPage = () => {
@@ -18,7 +19,7 @@ const TrackPage = () => {
                 К трекам
             </Button>
             <Grid container style={{margin: '20px 0px'}}>
-                <img src={track.picture} width={200} height={200} />
+                <Image src={track.picture} width={200} height={200} alt='' />
                 <div style={{margin: '20px 0px 20px 15px'}}>
                     <h1>Исполнитель - {track.artist}</h1>
                     <h2>Трек - {track.name}</h2>
@@ -45,7 +46,7 @@ const TrackPage = () => {
             </Grid>
             <div>
                 {track.comments.map(comment => 
-                    <div>
+                    <div key={comment._id}>
                         <div>Автор - {comment.username}</div>
                         <div>Комментарий - {comment.text}</div>
                     </div>

@@ -5,7 +5,7 @@ import FileUpload from '../../components/FileUpload';
 import MainLayout from '../../layouts/MainLayout';
 import {Grid,Button} from '@mui/material';
 
-const create = () => {
+const Create = () => {
     const [activeStep, setActiveStep] = useState(0)
     const [image, setImage] = useState(null)
     const [audio, setAudio] = useState(null)
@@ -43,4 +43,4 @@ const create = () => {
     );
 };
 
-export default create;
+export default Create;
