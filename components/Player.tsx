@@ -4,13 +4,26 @@ import { Pause, PlayArrow, VolumeUp } from '@mui/icons-material';
 import styles from '../styles/Player.module.sass';
 import {ITrack} from '../types/track'
 import TrackProgress from './TrackProgress';
+import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../hooks/useAction';
 
 const Player = () => {
-    const active=false;
     const track: ITrack = {_id: '1', name: 'MOW', artist: 'Gunna', text: 'moowowo', listens: 40, audio:'', picture:'https://upload.wikimedia.org/wikipedia/ru/5/53/Wunna_%28Deluxe%29.png', comments: []};
+
+    const {pause, volume, active, duration, currentTime} = useTypedSelector(state => state.player)
+    const {pauseTrack, playTrack} = useActions()
+
+    const play = () => {
+        if (pause) {
+            playTrack()
+        } else {
+            pauseTrack()
+        }
+    }
+
     return (
         <div className={styles.player}>
-            <IconButton onClick={e => e.stopPropagation()}>
+            <IconButton onClick={play}>
                 {active 
                     ? <Pause />
                     : <PlayArrow />
